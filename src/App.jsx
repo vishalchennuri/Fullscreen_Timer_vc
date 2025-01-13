@@ -41,34 +41,37 @@ function App() {
 
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (editing) {
-        const value = parseInt(e.key, 10);
-        if (!isNaN(value)) {
-          if (editing === "minutes") {
-            setMinutes((prev) => Math.min(prev * 10 + value, 60));
-          } else if (editing === "seconds") {
-            setSeconds((prev) => Math.min(prev * 10 + value, 60));
+      // Only handle key presses if focus is not on an editable field
+      if (document.activeElement === document.body || !['minutes', 'seconds'].includes(editing)) {
+        if (editing) {
+          const value = parseInt(e.key, 10);
+          if (!isNaN(value)) {
+            if (editing === "minutes") {
+              setMinutes((prev) => Math.min(prev * 10 + value, 60));
+            } else if (editing === "seconds") {
+              setSeconds((prev) => Math.min(prev * 10 + value, 60));
+            }
           }
-        }
-      } else {
-        switch (e.key.toLowerCase()) {
-          case " ":
-            setRunning((prev) => {
-              if (!prev) setEditing(null); // Deselect when starting
-              return !prev;
-            });
-            break;
-          case "r":
-            handleReset();
-            break;
-          case "t":
-            switchToTimer();
-            break;
-          case "s":
-            switchToStopwatch();
-            break;
-          default:
-            break;
+        } else {
+          switch (e.key.toLowerCase()) {
+            case " ":
+              setRunning((prev) => {
+                if (!prev) setEditing(null); // Deselect when starting
+                return !prev;
+              });
+              break;
+            case "r":
+              handleReset();
+              break;
+            case "t":
+              switchToTimer();
+              break;
+            case "s":
+              switchToStopwatch();
+              break;
+            default:
+              break;
+          }
         }
       }
     };

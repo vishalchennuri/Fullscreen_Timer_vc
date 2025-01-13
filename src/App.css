@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  height: 100vh;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+.large-timer {
+  font-size: 60vh; /* Takes up more than half the screen */
+  line-height: 1;
+  margin: 0;
+}
+
+.large-timer span {
+  cursor: default;
+}
+
+.large-timer .editable {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
+
+button {
+  min-width: 100px;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+}
+
+.btn-white:hover {
+  background-color: lightgray;
+}
+
+.btn-black {
+  background-color: black;
+  color: white;
+}
+
+.btn-black:hover {
+  background-color: gray;
+}
